@@ -1,0 +1,35 @@
+Exercice 2
+
+Question 1 : Cela fonctionne car le main se trouve dans la classe Point.
+Il peut donc accéder aux attributs x et y.
+
+Question 2 : Les attributs x et y ne sont pas accessibles, car ils sont privés et ne sont pas dans la même classe que le Main.
+Pour y remédier, il faut mettre les attributs en public, protected ou en package visible.
+
+Question 3 : En Java, il faut que les champs d'une classe soient privés pour respecter l'encapsulation.
+Cela permet de protéger les données contre les modifications non voulues, en protégeant l'accès pour la sécurité.
+Cela est également utile pour l'évolution et la réutilisation du code.
+
+Question 4 : Un accesseur (ou getter) est une méthode qui permet d'accéder à un attribut privé dans une classe.
+Nous devons le faire ici, pour pouvoir accéder aux variables x et y. (méthodes getX() et getY())
+
+Questions 5 : J'ai créé le constructeur dans la classe Point.
+Le problème est que le Main appelle "new Point()", donc un constructeur par défaut, sans px et py.
+
+Question 6 : Il ne se passe rien.
+Dans le constructeur, j'ai maintenant "public Point(int x, int y)" à la place de "public Point(int px, int py)", mais "new Point()" est toujours problématique.
+De plus, il n'y a pas d'ambiguïté dans mon code, car j'ai mis le mot clé "this".
+J'ai modifié l'appel dans le Main.
+
+Question 7 : Pour ce faire, il faut ajouter un champ static à la classe Point qu'on incrémente dans le constructeur.
+
+Question 8 : Le constructeur sait quel constructeur appeler en fonction de ce qu'on lui passe en argument.
+Par exemple :
+int x = 1;
+int y = 2;
+Point point = new Point(3,4);
+Point p1 = new Point(x, y); // Ici, on lui passe (int, int), donc il sait que c'est le premier constructeur.
+Point p2 = new Point(point); // Ici, on lui passe (Point), donc il sait que c'est le deuxième constructeur.
+
+Question 10 : Ce code affiche true pour "System.out.println(p1==p2);", grâce à la ligne "Point p2=p1;" : les deux variables p1 et p2 pointent vers le même objet en mémoire
+En revanche, elle affiche false pour "System.out.println(p1==p3);", car les objets p1 et p3 pointe vers un objet distinct en mémoire, même s'ils ont les mêmes coordonnées.
